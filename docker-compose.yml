@@ -1,0 +1,28 @@
+version: "3.7"
+services:
+  cmangos:
+    build: ./build
+    image: cmangos
+    #    restart: always
+    volumes:
+      - ./files/cmangos/etc:/cmangos/etc
+      - ./files/cmangos/classic-db:/cmangos/classic-db
+      - ./files/cmangos/wow-client:/cmangos/wow-client
+      - database:/var/lib/mysql
+        #    ports:
+        #      - 3724:3724
+        #      - 8085:8085
+
+  web:
+    image: python
+    #    restart: always
+    depends_on:
+      - cmangos
+    volumes:
+      - ./files/web:/app
+        #    ports:
+        #      - 8086:8086
+    command: bash -c "pip install flask && python /app/webserver.py"
+
+volumes:
+  database:
