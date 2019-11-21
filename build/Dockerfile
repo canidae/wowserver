@@ -21,7 +21,6 @@ CMD service mysql start && \
         mysql classicmangos < base/mangos.sql && \
         mysql classiccharacters < base/characters.sql && \
         mysql classicrealmd < base/realmd.sql && \
-        mysql classicmangos -e "UPDATE command SET security=3 WHERE name='account create';" && \
         mysql classicrealmd -e "DELETE FROM account WHERE username!='ADMINISTRATOR'; UPDATE realmlist SET name='Pinchcliffe';" && \
         cd ../bin; \
     fi; \
@@ -29,6 +28,8 @@ CMD service mysql start && \
     printf "FORCE_WAIT=NO\nCORE_PATH=../" > InstallFullDB.config && \
     sed -i 's/MYSQL_COMMAND=.*/MYSQL_COMMAND="mysql classicmangos"/g' InstallFullDB.sh && \
     bash InstallFullDB.sh && \
+    mysql classicmangos -e "UPDATE command SET security=3 WHERE name='account create';" && \
+    mysql classicmangos -e "UPDATE item_template SET sellprice=sellprice*10, buyprice=buyprice*10 WHERE quality=0;" && \
     cd ../bin; \
     ln -s ../wow-client/maps; \
     ln -s ../wow-client/dbc; \

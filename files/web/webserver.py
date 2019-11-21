@@ -50,18 +50,18 @@ def telnet(username, password):
     except:
         pass
     try:
-        tn = telnetlib.Telnet("localhost", "3443", 15)
+        tn = telnetlib.Telnet("cmangos", "3443", 15)
     except:
         print("Unable to connect to server")
         return "Unable to connect to server"
     print(tn.read_some())
-    tn.write("administrator\n")
+    tn.write("administrator\n".encode('ascii'))
     print(tn.read_some())
     if adm_pass:
         tn.write(("%s\n" % adm_pass).encode('ascii'))
         print(tn.read_some())
     else:
-        tn.write("administrator\n")
+        tn.write("administrator\n".encode('ascii'))
         print(tn.read_some())
         f = open("/var/lib/mysql/cmangos_adm_pass", "w")
         new_adm_pass = str(uuid.uuid1())[:15]
@@ -71,8 +71,8 @@ def telnet(username, password):
         print(tn.read_some())
     tn.write(("account create %s %s\n" % (username, password)).encode('ascii'))
     data = tn.read_some()[:-9]
-    print("Result: " + data)
-    return data
+    print("Result: " + data.decode('ascii'))
+    return data.decode('ascii')
 
 
 if __name__ == '__main__':
