@@ -1,6 +1,8 @@
 [submodule "files/cmangos/classic-db"]
 	path = files/cmangos/classic-db
-	url = https://github.com/cmangos/classic-db
+	url = https://github.com/canidae/classic-db
+	branch = master
 [submodule "build/mangos-classic"]
 	path = build/mangos-classic
-	url = https://github.com/cmangos/mangos-classic
+	url = https://github.com/canidae/mangos-classic
+	branch = master
