@@ -29,7 +29,6 @@ CMD service mysql start && \
     sed -i 's/MYSQL_COMMAND=.*/MYSQL_COMMAND="mysql classicmangos"/g' InstallFullDB.sh && \
     bash InstallFullDB.sh && \
     mysql classicmangos -e "UPDATE command SET security=3 WHERE name='account create';" && \
-    mysql classicmangos -e "UPDATE item_template SET sellprice=sellprice*10, buyprice=buyprice*10 WHERE quality=0;" && \
     cd ../bin; \
     ln -s ../wow-client/maps; \
     ln -s ../wow-client/dbc; \
