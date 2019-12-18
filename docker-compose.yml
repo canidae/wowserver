@@ -4,6 +4,8 @@ services:
     build: ./build
     image: cmangos
     restart: always
+    environment:
+      - TZ=Europe/Oslo
     volumes:
       - ./files/cmangos/etc:/cmangos/etc
       - ./files/cmangos/classic-db:/cmangos/classic-db
