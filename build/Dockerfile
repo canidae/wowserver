@@ -42,4 +42,4 @@ CMD service mysql start && \
         cd ../bin; \
     fi && \
     ./realmd --s run && \
-    unbuffer catchsegv ./mangosd > "../etc/`date +%Y%m%d%H%M`.log"
+    unbuffer catchsegv ./mangosd
