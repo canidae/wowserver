@@ -30,11 +30,11 @@ CMD service mysql start && \
     bash InstallFullDB.sh && \
     mysql classicmangos -e "UPDATE command SET security=3 WHERE name='account create';" && \
     cd ../bin && \
-    ln -s ../wow-client/maps && \
-    ln -s ../wow-client/dbc && \
-    ln -s ../wow-client/Cameras && \
-    ln -s ../wow-client/vmaps && \
-    ln -s ../wow-client/mmaps && \
+    ln -sf ../wow-client/maps && \
+    ln -sf ../wow-client/dbc && \
+    ln -sf ../wow-client/Cameras && \
+    ln -sf ../wow-client/vmaps && \
+    ln -sf ../wow-client/mmaps && \
     if [ ! -e maps ]; then \
         cd ../wow-client && \
         cp ../bin/tools/* . && \
