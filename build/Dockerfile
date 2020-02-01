@@ -15,18 +15,20 @@ COPY --from=builder /cmangos/run /cmangos
 COPY --from=builder /cmangos/mangos-classic/sql /cmangos/sql
 WORKDIR /cmangos/bin
 CMD service mysql start && \
-    if [ ! -d /var/lib/mysql/classicmangos ]; then \
-        cd ../sql && \
-        mysql < create/db_create_mysql.sql && \
-        mysql classicmangos < base/mangos.sql && \
-        mysql classiccharacters < base/characters.sql && \
+    cd ../sql && \
+    mysql -e "DROP DATABASE classicmangos;" && \
+    mysql < create/db_create_mysql.sql && \
+    mysql classicmangos < base/mangos.sql && \
+    if [ ! -d /var/lib/mysql/classiccharacters ]; then \
+        mysql classiccharacters < base/characters.sql; \
+    fi && \
+    if [ ! -d /var/lib/mysql/classicrealmd ]; then \
         mysql classicrealmd < base/realmd.sql && \
-        mysql classicrealmd -e "DELETE FROM account WHERE username!='ADMINISTRATOR'; UPDATE realmlist SET name='Pinchcliffe';" && \
-        cd ../bin; \
+        mysql classicrealmd -e "DELETE FROM account WHERE username!='ADMINISTRATOR'; UPDATE realmlist SET name='Pinchcliffe';"; \
     fi && \
     cd ../classic-db && \
     printf "FORCE_WAIT=NO\nCORE_PATH=../" > InstallFullDB.config && \
-    sed -i 's/MYSQL_COMMAND=.*/MYSQL_COMMAND="mysql classicmangos"/g' InstallFullDB.sh && \
+    sed -i 's/MYSQL_COMMAND=.*/MYSQL_COMMAND="mysql classicmangos"/;s/DEV_UPDATES="NO"/DEV_UPDATES="YES"/' InstallFullDB.sh && \
     bash InstallFullDB.sh && \
     mysql classicmangos -e "UPDATE command SET security=3 WHERE name='account create';" && \
     cd ../bin && \
