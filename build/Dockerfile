@@ -16,13 +16,13 @@ COPY --from=builder /cmangos/mangos-classic/sql /cmangos/sql
 WORKDIR /cmangos/bin
 CMD service mysql start && \
     cd ../sql && \
-    mysql -e "DROP DATABASE classicmangos;" && \
+    mysql -e "DROP DATABASE IF EXISTS classicmangos;" && \
     mysql < create/db_create_mysql.sql && \
     mysql classicmangos < base/mangos.sql && \
-    if [ ! -d /var/lib/mysql/classiccharacters ]; then \
+    if [ $(ls -1 /var/lib/mysql/classiccharacters | wc -l) -lt 2 ]; then \
         mysql classiccharacters < base/characters.sql; \
     fi && \
-    if [ ! -d /var/lib/mysql/classicrealmd ]; then \
+    if [ $(ls -1 /var/lib/mysql/classicrealmd | wc -l) -lt 2 ]; then \
         mysql classicrealmd < base/realmd.sql && \
         mysql classicrealmd -e "DELETE FROM account WHERE username!='ADMINISTRATOR'; UPDATE realmlist SET name='Pinchcliffe';"; \
     fi && \
