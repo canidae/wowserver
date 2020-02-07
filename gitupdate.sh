@@ -1,6 +1,6 @@
 #!/bin/bash
 git pull
-cd build/mangos-classic
+cd src/mangos-classic
 git fetch origin
 git fetch upstream
 git checkout --detach
@@ -9,7 +9,7 @@ git merge --no-edit origin/pinchcliffe
 git merge --no-edit origin/ahbot
 git merge --no-edit origin/create_db_if_not_exists
 cd -
-cd files/cmangos/classic-db
+cd src/classic-db
 git fetch origin
 git fetch upstream
 git checkout --detach

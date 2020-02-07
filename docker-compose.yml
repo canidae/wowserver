@@ -1,15 +1,13 @@
 version: "3.7"
 services:
   cmangos:
-    build: ./build
+    build: ./docker
     image: cmangos
     restart: always
     environment:
       - TZ=Europe/Oslo
     volumes:
-      - ./files/cmangos/etc:/cmangos/etc
-      - ./files/cmangos/classic-db:/cmangos/classic-db
-      - ./files/cmangos/wow-client:/cmangos/wow-client
+      - ./src:/cmangos
       - database:/var/lib/mysql
     ports:
       - 3724:3724
@@ -21,7 +19,7 @@ services:
     depends_on:
       - cmangos
     volumes:
-      - ./files/web:/app
+      - ./web:/app
       - database:/var/lib/mysql
     ports:
       - 8086:8086
