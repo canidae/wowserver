@@ -1,7 +1,7 @@
 #!/bin/bash
 mkdir -p /cmangos/build
 cd /cmangos/build
-cmake -DDEBUG=0 -DBUILD_EXTRACTORS=ON -DCMAKE_INSTALL_PREFIX=../ ../mangos-classic
+cmake -DDEBUG=0 -DBUILD_EXTRACTORS=ON -DBUILD_AHBOT=YES -DCMAKE_INSTALL_PREFIX=../ ../mangos-classic
 make -j`nproc`
 make install
 cd -
