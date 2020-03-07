@@ -3,7 +3,7 @@ services:
   cmangos:
     build: ./docker
     image: cmangos
-    restart: always
+    restart: "unless-stopped"
     environment:
       - TZ=Europe/Oslo
     volumes:
@@ -15,7 +15,7 @@ services:
 
   web:
     image: python
-    restart: always
+    restart: "unless-stopped"
     depends_on:
       - cmangos
     volumes:

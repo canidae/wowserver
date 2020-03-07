@@ -8,7 +8,8 @@ cd -
 service mysql start
 cd /cmangos/mangos-classic/sql
 mysql -e "DROP DATABASE IF EXISTS classicmangos;"
-mysql < create/db_create_mysql.sql
+sed 's/CREATE DATABASE `/CREATE DATABASE IF NOT EXISTS `/' create/db_create_mysql.sql > /tmp/db_create_mysql.sql
+mysql < /tmp/db_create_mysql.sql
 mysql classicmangos < base/mangos.sql
 if [ $(ls -1 /var/lib/mysql/classiccharacters | wc -l) -lt 2 ]; then
     mysql classiccharacters < base/characters.sql
@@ -19,8 +20,8 @@ if [ $(ls -1 /var/lib/mysql/classicrealmd | wc -l) -lt 2 ]; then
 fi
 cd /cmangos/classic-db
 printf "FORCE_WAIT=NO\nCORE_PATH=../mangos-classic" > InstallFullDB.config
-sed -i 's/MYSQL_COMMAND=.*/MYSQL_COMMAND="mysql classicmangos"/;s/DEV_UPDATES="NO"/DEV_UPDATES="YES"/' InstallFullDB.sh
-bash InstallFullDB.sh
+sed 's/MYSQL_COMMAND=.*/MYSQL_COMMAND="mysql classicmangos"/;s/DEV_UPDATES="NO"/DEV_UPDATES="YES"/' InstallFullDB.sh > /tmp/InstallFullDB.sh
+bash /tmp/InstallFullDB.sh
 mysql classicmangos -e "UPDATE command SET security=3 WHERE name='account create';"
 cd /cmangos/bin
 ln -sf /cmangos/wow-client/maps
