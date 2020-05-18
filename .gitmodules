@@ -1,10 +1,10 @@
 [submodule "src/mangos-classic"]
     path = src/mangos-classic
-    url = https://github.com/canidae/mangos-classic
+    url = git@github.com:canidae/mangos-classic
     branch = master
     ignore = all
 [submodule "src/classic-db"]
     path = src/classic-db
-    url = https://github.com/canidae/classic-db
+    url = git@github.com:canidae/classic-db
     branch = master
     ignore = all
