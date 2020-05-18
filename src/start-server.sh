@@ -22,7 +22,7 @@ cd /cmangos/classic-db
 printf "FORCE_WAIT=NO\nCORE_PATH=../mangos-classic" > InstallFullDB.config
 sed 's/MYSQL_COMMAND=.*/MYSQL_COMMAND="mysql classicmangos"/;s/DEV_UPDATES="NO"/DEV_UPDATES="YES"/' InstallFullDB.sh > /tmp/InstallFullDB.sh
 bash /tmp/InstallFullDB.sh
-mysql classicmangos -e "UPDATE command SET security=3 WHERE name='account create';"
+mysql classicmangos -e "UPDATE command SET security=3 WHERE name LIKE 'account %' AND security=4;"
 cd /cmangos/bin
 ln -sf /cmangos/wow-client/maps
 ln -sf /cmangos/wow-client/dbc
