@@ -1,7 +1,8 @@
 #!/bin/bash
+# parameter to this script can be "valgrind" or "gdb" (for debugging) for debugging
 mkdir -p /cmangos/build
 cd /cmangos/build
-cmake -DDEBUG=0 -DBUILD_EXTRACTORS=ON -DBUILD_AHBOT=YES -DCMAKE_INSTALL_PREFIX=../ ../mangos-classic
+cmake -DDEBUG=1 -DBUILD_EXTRACTORS=ON -DBUILD_AHBOT=YES -DCMAKE_INSTALL_PREFIX=../ ../mangos-classic
 make -j`nproc`
 make install
 cd -
@@ -36,7 +37,6 @@ if [ ! -e maps ]; then
     cd /cmangos/bin
 fi
 ./realmd --s run
-# parameter to this script can be "unbuffer" (when running docker container), "gdb" (for debugging) or nothing
 $1 ./mangosd
 killall -SIGINT realmd
 service mysql stop
