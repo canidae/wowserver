@@ -37,6 +37,6 @@ if [ ! -e maps ]; then
     cd /cmangos/bin
 fi
 ./realmd --s run
-$1 ./mangosd
+$1 ./mangosd 2>>stderr.log
 killall -SIGINT realmd
 service mysql stop
