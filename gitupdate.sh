@@ -7,7 +7,6 @@ git checkout master
 git checkout --detach
 git pull --no-edit upstream master
 git merge --no-edit origin/pinchcliffe
-git merge --no-edit origin/valgrind_fixes
 cd -
 cd src/classic-db
 git fetch origin
@@ -16,4 +15,5 @@ git checkout master
 git checkout --detach
 git pull --no-edit upstream master
 git merge --no-edit origin/pinchcliffe
+git merge --no-edit origin/ahbot_items
 cd -
