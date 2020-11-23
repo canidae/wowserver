@@ -1,9 +1,7 @@
 #!/bin/bash
 cd /root/wowserver
-docker-compose down
 mount /dev/sdb1 /mnt/
-# TODO: backup using sql dump
-tar cpzf "/mnt/$(date +"%y%m%d").tar.gz" /var/lib/docker/volumes/wowserver_database
+docker-compose exec cmangos bash -c "mysqldump --all-databases > databases.sql"
+tar cpzf "/mnt/$(date +"%y%m%d").tar.gz" /src/databases.sql
 sync
 umount /mnt
-docker-compose up -d
