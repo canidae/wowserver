@@ -2,3 +2,4 @@ src/wow-client
 src/build
 src/bin
 src/etc/*.dist
+src/databases.sql
