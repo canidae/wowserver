@@ -1,5 +1,5 @@
 #!/bin/bash
-# parameter to this script can be "valgrind" or "gdb" (for debugging) for debugging
+# parameter to this script can be "valgrind" or "gdb" for debugging
 mkdir -p /cmangos/build
 cd /cmangos/build
 cmake -DDEBUG=0 -DBUILD_EXTRACTORS=ON -DBUILD_AHBOT=YES -DCMAKE_INSTALL_PREFIX=../ ../mangos-classic
