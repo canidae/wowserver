@@ -1,9 +1,13 @@
 #!/bin/bash
-git submodule init
-git submodule update --no-fetch
-cd src/mangos-classic
-git remote add upstream https://github.com/cmangos/mangos-classic.git
-cd -
-cd src/classic-db
-git remote add upstream https://github.com/cmangos/classic-db.git
-cd -
+cd src
+git clone git@github.com:cmangos/mangos-wotlk.git
+cd mangos-wotlk
+git remote add canidae git@github.com:canidae/mangos-wotlk.git
+git config pull.rebase true
+cd ..
+git clone git@github.com:cmangos/wotlk-db.git
+cd wotlk-db
+git remote add canidae git@github.com:canidae/wotlk-db.git
+git config pull.rebase true
+cd ..
+cd ..

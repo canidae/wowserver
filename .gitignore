@@ -1,3 +1,5 @@
+src/mangos-wotlk
+src/wotlk-db
 src/wow-client
 src/build
 src/bin
