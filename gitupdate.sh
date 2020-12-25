@@ -6,10 +6,10 @@ git fetch origin
 git checkout master
 git checkout --detach
 git pull --no-edit origin master
+git merge --no-edit canidae/new_mysql
 #git merge --no-edit canidae/pinchcliffe
 #git merge --no-edit canidae/faerie_fix
 #git merge --no-edit canidae/stopresting
-#git merge --no-edit canidae/new_mysql
 cd -
 cd src/wotlk-db
 git fetch canidae
