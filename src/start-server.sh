@@ -25,11 +25,11 @@ sed 's/MYSQL_COMMAND=.*/MYSQL_COMMAND="mysql wotlkmangos"/;s/DEV_UPDATES="NO"/DE
 bash /tmp/InstallFullDB.sh
 mysql wotlkmangos -e "UPDATE command SET security=3 WHERE name LIKE 'account %' AND security=4;"
 cd /cmangos/bin
-ln -sf /cmangos/wow-client/maps
-ln -sf /cmangos/wow-client/dbc
-ln -sf /cmangos/wow-client/Cameras
-ln -sf /cmangos/wow-client/vmaps
-ln -sf /cmangos/wow-client/mmaps
+ln -sf ../wow-client/maps
+ln -sf ../wow-client/dbc
+ln -sf ../wow-client/Cameras
+ln -sf ../wow-client/vmaps
+ln -sf ../wow-client/mmaps
 if [ ! -e maps ]; then
     cd /cmangos/wow-client
     cp /cmangos/bin/tools/* .
