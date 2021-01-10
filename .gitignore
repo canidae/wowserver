@@ -5,3 +5,4 @@ src/build
 src/bin
 src/etc/*.dist
 src/databases.sql
+web/cmangos_adm_pass
