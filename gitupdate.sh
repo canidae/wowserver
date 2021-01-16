@@ -1,22 +1,23 @@
 #!/bin/bash
 git pull
-cd src/mangos-classic
+cd src/mangos-wotlk
+git fetch canidae
 git fetch origin
-git fetch upstream
 git checkout master
 git checkout --detach
-git pull --no-edit upstream master
-git merge --no-edit origin/pinchcliffe
-git merge --no-edit origin/faerie_fix
-git merge --no-edit origin/stopresting
-git merge --no-edit origin/new_mysql
+git pull --no-edit origin master
+git merge --no-edit canidae/new_mysql
+git merge --no-edit canidae/ahbot_balancing
+#git merge --no-edit canidae/pinchcliffe
+#git merge --no-edit canidae/faerie_fix
+#git merge --no-edit canidae/stopresting
 cd -
-cd src/classic-db
+cd src/wotlk-db
+git fetch canidae
 git fetch origin
-git fetch upstream
 git checkout master
 git checkout --detach
-git pull --no-edit upstream master
-git merge --no-edit origin/pinchcliffe
-git merge --no-edit origin/felsteed
+git pull --no-edit origin master
+#git merge --no-edit canidae/pinchcliffe
+#git merge --no-edit canidae/felsteed
 cd -

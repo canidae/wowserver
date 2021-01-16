@@ -1,1 +1,1 @@
-Install World of Warcraft client 1.12.1 here
+Install World of Warcraft client 3.3.5a here

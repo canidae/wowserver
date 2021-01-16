@@ -44,7 +44,7 @@ def telnet(username, password):
     print("Creating account: %s" % username)
     adm_pass = ""
     try:
-        f = open("/var/lib/mysql/cmangos_adm_pass", "r")
+        f = open("/app/cmangos_adm_pass", "r")
         adm_pass = f.read()
         f.close()
     except:
@@ -63,7 +63,7 @@ def telnet(username, password):
     else:
         tn.write("administrator\n".encode('ascii'))
         print(tn.read_some())
-        f = open("/var/lib/mysql/cmangos_adm_pass", "w")
+        f = open("/app/cmangos_adm_pass", "w")
         new_adm_pass = str(uuid.uuid1())[:15]
         f.write(new_adm_pass)
         f.close()

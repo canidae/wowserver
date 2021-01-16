@@ -1,0 +1,18 @@
+insert into wotlkcharacters.character_action select guid, 0, button, action, type from classiccharacters.character_action;
+insert into wotlkcharacters.character_homebind select * from classiccharacters.character_homebind;
+insert into wotlkcharacters.character_inventory select * from classiccharacters.character_inventory;
+insert into wotlkcharacters.character_pet select id, entry, owner, modelid, createdbyspell, pettype, level, exp, reactstate, name, renamed, slot, curhealth, curmana, curhappiness, savetime, resettalents_cost, resettalents_time, abdata from classiccharacters.character_pet;
+insert into wotlkcharacters.character_queststatus select guid, quest, status, rewarded, explored, timer, mobcount1, mobcount2, mobcount3, mobcount4, itemcount1, itemcount2, itemcount3, itemcount4, 0, 0 from classiccharacters.character_queststatus;
+insert into wotlkcharacters.character_reputation select * from classiccharacters.character_reputation;
+insert into wotlkcharacters.character_skills select * from classiccharacters.character_skills;
+insert into wotlkcharacters.character_social select guid, friend, flags, "" from classiccharacters.character_social;
+insert into wotlkcharacters.character_spell select * from classiccharacters.character_spell where classiccharacters.character_spell.spell in (select id from classicmangos.spell_template where effect1 in (24, 33, 47, 53, 95));
+insert into wotlkcharacters.characters select guid, account, name, race, class, gender, level, xp, money, playerbytes, playerbytes2, playerflags, position_x, position_y, position_z, map, 0, orientation, taximask, online, cinematic, totaltime, leveltime, logout_time, is_logout_resting, rest_bonus, resettalents_cost, resettalents_time, trans_x, trans_y, trans_z, trans_o, transguid, extra_flags, stable_slots, 4, zone, death_expire_time, taxi_path, 0, 0, 0, 0, 0, 0, 0, 0, 0, watchedfaction, drunk, health, power1, power2, power3, power4, power5, 0, 0, 1, 0, concat(exploredzones, repeat(" 0", 64)), equipmentcache, ammoid, null, actionbars, deleteinfos_account, deleteinfos_name, deletedate from classiccharacters.characters;
+insert into wotlkcharacters.guild select guildid, name, leaderguid, emblemstyle, emblemcolor, borderstyle, bordercolor, backgroundcolor, info, motd, createdate, 0 from classiccharacters.guild;
+insert into wotlkcharacters.guild_eventlog select * from classiccharacters.guild_eventlog;
+insert into wotlkcharacters.guild_member select guildid, guid, rank, pnote, offnote, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 from classiccharacters.guild_member;
+insert into wotlkcharacters.guild_rank select guildid, rid, rname, rights, 0 from classiccharacters.guild_rank;
+insert into wotlkcharacters.item_instance select guid, owner_guid, itementry, creatorguid, giftcreatorguid, count, duration, charges, flags, enchantments, randompropertyid, durability, 0, null from classiccharacters.item_instance;
+insert into wotlkcharacters.pet_spell select * from classiccharacters.pet_spell;
+delete from wotlkrealmd.account;
+insert into wotlkrealmd.account select * from classicrealmd.account;

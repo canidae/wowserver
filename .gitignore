@@ -1,5 +1,8 @@
+src/mangos-wotlk
+src/wotlk-db
 src/wow-client
 src/build
 src/bin
 src/etc/*.dist
 src/databases.sql
+web/cmangos_adm_pass
