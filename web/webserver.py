@@ -24,12 +24,11 @@ def index():
     <!doctype html>
     <title>Create account</title>
     <ol>
-      <li>Install vanilla World of Warcraft patched to v1.12.1 (not the new classic client). Prepatched client found <a href="https://drive.google.com/file/d/1TDoNNUXCtsgIUhLw96biPCqjv3AcLYkg/view">here</a> or <a href="https://mega.nz/#!uYxBWAYb!4bV1pqFl2-zXRS7063GqzAnt53oe5jTcmlVce9CtKPc">here</a></li>
-      <li id="realmlist">In World of Warcraft install folder, edit realmlist.wtf: set realmlist </li>
+      <li>Install World of Warcraft patched to v3.3.5a.
+      <li id="realmlist">Edit «World of Warcraft install folder»/Data/enUS/realmlist.wtf to contain: set realmlist wow.exent.net</li>
       <li>Create account below (only letters, 3-15 characters in both fields)</li>
       <li>Play game</li>
     </ol>
-    <script>document.getElementById("realmlist").innerHTML += location.hostname</script>
     <form method="post">
       Username:<br>
       <input name="user" pattern="[A-Za-z]{3,15}" type="text"><br>
@@ -69,7 +68,7 @@ def telnet(username, password):
         f.close()
         tn.write(("account password administrator %s %s\n" % (new_adm_pass, new_adm_pass)).encode('ascii'))
         print(tn.read_some())
-    tn.write(("account create %s %s\n" % (username, password)).encode('ascii'))
+    tn.write(("account create %s %s 2\n" % (username, password)).encode('ascii'))
     data = tn.read_some()[:-9]
     print("Result: " + data.decode('ascii'))
     return data.decode('ascii')
