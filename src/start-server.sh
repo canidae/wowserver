@@ -1,5 +1,4 @@
 #!/bin/bash
-# parameter to this script can be "valgrind" or "gdb" for debugging
 mkdir -p /cmangos/build
 cd /cmangos/build
 cmake -DDEBUG=0 -DBUILD_EXTRACTORS=ON -DBUILD_AHBOT=YES -DCMAKE_INSTALL_PREFIX=../ ../mangos-wotlk
@@ -37,6 +36,6 @@ if [ ! -e maps ]; then
     cd /cmangos/bin
 fi
 ./realmd --s run
-$1 ./mangosd 2>>stderr.log
+gdb -batch -ex "run" -ex "bt" ./mangosd 2>>stderr.log
 killall -SIGINT realmd
 service mysql stop
