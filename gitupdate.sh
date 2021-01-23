@@ -18,6 +18,7 @@ git fetch origin
 git checkout master
 git checkout --detach
 git pull --no-edit origin master
+git merge --no-edit canidae/disrupt_their_reinforcements
 #git merge --no-edit canidae/pinchcliffe
 #git merge --no-edit canidae/felsteed
 cd -
