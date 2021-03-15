@@ -1,7 +1,7 @@
 #!/bin/bash
 mkdir -p /cmangos/build
 cd /cmangos/build
-cmake -DDEBUG=0 -DBUILD_EXTRACTORS=ON -DBUILD_AHBOT=YES -DCMAKE_INSTALL_PREFIX=../ ../mangos-wotlk
+cmake -DDEBUG=1 -DBUILD_EXTRACTORS=ON -DBUILD_AHBOT=YES -DCMAKE_INSTALL_PREFIX=../ ../mangos-wotlk
 make -j`nproc`
 make install
 cd -
