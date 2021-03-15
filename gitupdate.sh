@@ -6,7 +6,7 @@ git checkout master
 git checkout --detach
 git pull --no-edit origin master
 git merge --no-edit canidae/new_mysql
-git merge --no-edit canidae/ahbot_balancing
+git merge --no-edit canidae/persist_items
 cd -
 cd src/wotlk-db
 git fetch canidae
